@@ -1,0 +1,32 @@
+[
+    {"id":"1",
+    "type":"radio",
+    "question":"question 1",
+    "choix":[
+        "response 1",
+        "response 2",
+        "response 3"
+    ],
+    "reponse":"response 2"
+    },
+
+
+    {"id":"2",
+    "type":"checkbox",
+    "question":"question 2",
+    "choix":[
+        "response 1",
+        "response 2",
+        "response 3"
+    ],
+    "reponses":["response 2", "response 3"]
+    },
+
+    {
+        "id":"3",
+        "type":"texte",
+        "question":"question 3",
+        "choix":null,
+        "reponse":"response 1"
+    }
+]
