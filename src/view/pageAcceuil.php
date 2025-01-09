@@ -13,7 +13,7 @@
     <main>
         <form action="submit.php" method="POST">
         <?php
-            use src\controller\Questionnaire
+            use src\controller\Questionnaire;
             $questionnaire=new Questionnaire("../../public/json/quizz.json");
             $questionnaire->affichage();
         ?>
