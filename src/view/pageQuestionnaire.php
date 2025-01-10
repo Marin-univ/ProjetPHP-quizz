@@ -1,5 +1,4 @@
 <?php 
-session_start();
 $_SESSION["nom"]=$_POST["nom"];
 ?>
 
@@ -18,9 +17,10 @@ $_SESSION["nom"]=$_POST["nom"];
     <main>
         <form action="submit.php" method="POST">
         <?php
-            use src\controller\Questionnaire;
-            $questionnaire=new Questionnaire("../../public/json/quizz.json");
-            $questionnaire->affichage();
+            $questionnaire = $_SESSION[$les_questions];
+            foreach($questionnaire as $q) {
+                $q->affiche();
+            }
         ?>
         <button type="submit">Répondre</button>
         </form>
