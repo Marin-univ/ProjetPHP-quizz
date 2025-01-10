@@ -1,12 +1,17 @@
 <?php
 
 class AutoLoader {
-    static function register() {
+    public static function register() {
         spl_autoload_register(array(__CLASS__, 'autoload'));
     }
 
-    static function autoload($fqcn) {
-        $file = str_replace('\\', '/', $fqcn) . '.php';
-        require 'src/controller' . $fqcn . '.php';
+    public static function autoload($fqcn) {
+        $file = 'src/' . str_replace('\\', '/', $fqcn) . '.php';
+
+        if (file_exists($file)) {
+            require $file;
+        } else {
+            throw new Exception("Erreur : Impossible de charger la classe. Fichier introuvable : $file");
+        }
     }
 }

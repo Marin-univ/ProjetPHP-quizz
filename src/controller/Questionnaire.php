@@ -11,6 +11,7 @@ class Questionnaire {
     public function __construct($fichier) {
         $this->nomDuFichier = $fichier;
         if (!file_exists($this->nomDuFichier)) {
+            error_log($this->nomDuFichier);
             die("Le fichier JSON spécifié est introuvable.");
         }
 
