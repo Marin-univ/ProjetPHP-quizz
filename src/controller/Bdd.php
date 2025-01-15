@@ -1,6 +1,6 @@
 <?php
 
-namespace controller\Bdd;
+namespace src\controller\Bdd;
 
 class Database
 {
