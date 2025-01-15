@@ -1,7 +1,10 @@
 <?php
 $_SESSION["nom"]=$_POST["nom"];
 
-$bdd=$_SESSION["bdd"];
+use src\controller\Bdd\Database;
+$base=new Database();
+$bdd=$base->getConnection();
+
 
 $presenceNom=$bdd->prepare("select COUNT(*) from UTILISATEUR where nom=:nom");
 $presenceNom->bindParam(":nom",$dev,PDO::PARAM_STR);

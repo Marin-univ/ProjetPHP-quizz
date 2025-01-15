@@ -2,14 +2,14 @@
 
 use controller\Questionnaire;
 
-require 'Autoloader.php';
+require_once 'Autoloader.php';
 AutoLoader::register();
-
+;
 session_start();
 
 $filePath = __DIR__ . "/public/json/quizz.json";
 $questionnaire = new Questionnaire($filePath);
-$_SESSION[$les_questions] = $questionnaire->getQuestions();
+$_SESSION["les_questions"] = $questionnaire->getQuestions();
 
-header("Location: /src/view/pageAcceuiL.php");
+header("Location: /src/view/pageAcceuil.php");
 exit;
