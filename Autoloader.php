@@ -1,8 +1,7 @@
 <?php
-
 class AutoLoader {
     public static function register() {
-        spl_autoload_register(array(__CLASS__, 'autoload'));
+        spl_autoload_register([__CLASS__, 'autoload']);
     }
 
     public static function autoload($fqcn) {
@@ -11,7 +10,8 @@ class AutoLoader {
         if (file_exists($file)) {
             require $file;
         } else {
-            throw new Exception("Erreur : Impossible de charger la classe. Fichier introuvable : $file");
+            error_log("Erreur : Impossible de charger la classe. Fichier introuvable : $file");
+            throw new Exception("Erreur : Fichier introuvable : $file");
         }
     }
 }
