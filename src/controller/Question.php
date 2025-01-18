@@ -1,54 +1,55 @@
 <?php
-
 namespace controller;
 
 class Question {
-
     private $id;
     private $type;
     private $question;
     private $choix;
     private $reponse;
-
+    
     public function __construct($id, $type, $question, $choix, $reponse) {
         $this->id = $id;
         $this->type = $type;
         $this->question = $question;
         $this->choix = $choix;
-        $this->reponse = $reponse;
+        // Gérer le cas des réponses multiples
+        $this->reponse = is_array($reponse) ? $reponse : [$reponse];
     }
 
     public function affiche() {
-        echo "<br><label name=$this->id>$this->question</p><br>";
-        switch($this->type) {
+        echo "<p><strong>{$this->question}</strong></p>";
+        
+        switch ($this->type) {
             case 'radio':
-                $html = "";
                 $i = 0;
                 foreach ($this->choix as $c) {
-                    $html .= "<br><input type=radio name=radio-$i id=radio value=$c></br>";
-                    $html .= "<br><label name=label-$i>$c</p><br>";
-                    $i+=1;
+                    echo "<input type='radio' name='question-{$this->id}' value='{$c}' id='radio-{$i}'><label for='radio-{$i}'>{$c}</label><br>";
+                    $i++;
                 }
-                echo $html;
                 break;
-
-            case 'texte':
-                echo "<br><input type=text name=text id=text value=$this->id></br>";
-                break;
-
             case 'checkbox':
-                $html = "";
                 $i = 0;
                 foreach ($this->choix as $c) {
-                    $html .= "<br><input type=checkbox name=checkbox-$i id=checkbox value=$c></br>";
-                    $html .= "<br><label name=label-$i>$c</p><br>";
-                    $i+=1;
+                    echo "<input type='checkbox' name='question-{$this->id}[]' value='{$c}' id='checkbox-{$i}'><label for='checkbox-{$i}'>{$c}</label><br>";
+                    $i++;
                 }
-                echo $html;
+                break;
+            case 'texte':
+                echo "<input type='text' name='question-{$this->id}'><br>";
                 break;
         }
-        echo "<br><input type=hidden name=id id=id value=$this->id></br>";
-        echo "<br><input type=hidden name=reponse id=reponse value=$this->reponse></br>";
     }
-    
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getReponse() {
+        return $this->reponse;
+    }
+
+    public function getType() {
+        return $this->type;
+    }
 }

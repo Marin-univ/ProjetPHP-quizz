@@ -1,22 +1,4 @@
 <?php
 
-namespace src\controllers\Bdd;
-
-class Database
-{
-    private static $connection = null;
-
-    public static function getConnection()
-    {
-        if (self::$connection === null) {
-            try {
-                self::$connection = new \PDO('mysql:host=servinfo-maria;dbname=DBfonteny','fonteny','fonteny');
-                self::$connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            } catch (\PDOException $e) {
-                error_log('Erreur de connexion : ' . $e->getMessage());
-                die('Erreur de connexion à la base de données.');
-            }
-        }
-        return self::$connection;
-    }
-}
+// src/config/config.php
+define('JSON_FILE_PATH', __DIR__ . '/../../public/json/quizz.json');
