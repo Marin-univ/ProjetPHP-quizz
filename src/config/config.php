@@ -1,4 +1,7 @@
 <?php
+use controller\Bdd\Database;
 
-// src/config/config.php
-define('JSON_FILE_PATH', __DIR__ . '/../../public/json/quizz.json');
+$base=new Database();
+$base->getConnection();
+?>
+

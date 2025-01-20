@@ -11,7 +11,7 @@
 </header>
 
 <main>
-    <form action="pageQuestionnaire.php" method="POST">
+    <form action="../controler/creationUtilisateur.php" method="POST">
         <label for="nom">Entrez votre pseudo</label>
         <input type="text" id="nom" name="nom">
         <button type="submit">Commencer le quiz</button>
