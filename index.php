@@ -1,9 +1,8 @@
 <?php
 
-use controller\Questionnaire;
+require 'Autoloader.php';
 
-// Charge l'autoloader
-require_once 'Autoloader.php';
+use controller\Questionnaire;
 AutoLoader::register();
 
 session_start();

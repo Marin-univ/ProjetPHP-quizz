@@ -5,7 +5,7 @@ class AutoLoader {
     }
 
     public static function autoload($fqcn) {
-        $file = 'src/' . str_replace('\\', '/', $fqcn) . '.php';
+        $file = str_replace('\\', '/', $fqcn) . '.php';
 
         if (file_exists($file)) {
             require $file;
